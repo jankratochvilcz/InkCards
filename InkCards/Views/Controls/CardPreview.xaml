@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="InkCards.Views.Controls.CardPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d">
+
+    <controls:DropShadowPanel
+        BlurRadius="8.0"
+        ShadowOpacity="0.15"
+        OffsetY="2"
+        Color="{ThemeResource ForegroundColor}">
+        <Grid 
+            Background="{ThemeResource CardBackgroundBrush}"
+            BorderBrush="{x:Bind BorderBrush, Mode=OneWay}"
+            BorderThickness="{x:Bind BorderThickness, Mode=OneWay}">
+            <InkCanvas
+                x:Name="PreviewImage"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Tapped="UserControl_Tapped"/>
+
+            <Rectangle
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Fill="Transparent"
+                IsHitTestVisible="True"
+                Tapped="UserControl_Tapped" />
+        </Grid>
+    </controls:DropShadowPanel>
+</UserControl>

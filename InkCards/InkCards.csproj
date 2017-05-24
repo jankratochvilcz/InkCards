@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{B8183FFD-74F6-4A19-98F7-AA967136467A}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InkCards</RootNamespace>
+    <AssemblyName>InkCards</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>InkCards_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>40BCA3D26902D3A157C2FAF5896A3AC1BAAFE3DA</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\Collection.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\Collection.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="InkCards_StoreKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Extensions\ListExtensions.cs" />
+    <Compile Include="Migrations\20170415145327_InitialMigration.cs" />
+    <Compile Include="Migrations\20170415145327_InitialMigration.designer.cs">
+      <DependentUpon>20170415145327_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\MainDatabaseContextModelSnapshot.cs" />
+    <Compile Include="Models\Cards\CardCollection.cs" />
+    <Compile Include="Models\Cards\CardSide.cs" />
+    <Compile Include="Models\Cards\InkCard.cs" />
+    <Compile Include="Models\Preferences\InkToolbarPreferences.cs" />
+    <Compile Include="Models\Testing\CardImpression.cs" />
+    <Compile Include="Services\Bootstrap\FirstRunService.cs" />
+    <Compile Include="Services\Bootstrap\IFirstRunService.cs" />
+    <Compile Include="Services\Bootstrap\UnityConfig.cs" />
+    <Compile Include="Services\CardOrderingService.cs" />
+    <Compile Include="Services\CardOrderingType.cs" />
+    <Compile Include="Services\ICardOrderingService.cs" />
+    <Compile Include="Services\Navigation\INavigationService.cs" />
+    <Compile Include="Services\Navigation\NavigationService.cs" />
+    <Compile Include="Services\Navigation\PageType.cs" />
+    <Compile Include="Services\Storage\Extensions\DesignInkCanvasPreferencesExtensions.cs" />
+    <Compile Include="Services\Storage\FlashcardStatsStorageService.cs" />
+    <Compile Include="Services\Storage\FolderBasedCardStorageService.cs" />
+    <Compile Include="Services\Storage\ICardImpressionStorageService.cs" />
+    <Compile Include="Services\Storage\ICardStorageService.cs" />
+    <Compile Include="Services\Storage\IPreferencesService.cs" />
+    <Compile Include="Services\Storage\Sqlite\MainDatabaseContext.cs" />
+    <Compile Include="Services\Storage\UserPreferencesService.cs" />
+    <Compile Include="Services\Testing\FlashcardSessionTestingService.cs" />
+    <Compile Include="Services\Testing\IFlashcardSessionTestingService.cs" />
+    <Compile Include="Services\Testing\NextCardToTest.cs" />
+    <Compile Include="ViewModels\Controls\CardEditorViewModel.cs" />
+    <Compile Include="ViewModels\Pages\Args\CardSideToTest.cs" />
+    <Compile Include="ViewModels\Pages\Args\FlashCardTestArgs.cs" />
+    <Compile Include="ViewModels\Pages\CardDesignPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\CardsBrowseViewModel.cs" />
+    <Compile Include="ViewModels\Pages\FlashcardTestViewModel.cs" />
+    <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
+    <Compile Include="Views\Controls\BindableInkCanvas.cs" />
+    <Compile Include="Views\Controls\CardCollectionPreview.xaml.cs">
+      <DependentUpon>CardCollectionPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\CardEditor.xaml.cs">
+      <DependentUpon>CardEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\CardPreview.xaml.cs">
+      <DependentUpon>CardPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Infrastructure\Behaviors\FocusControlAction.cs" />
+    <Compile Include="Views\Infrastructure\Converters\AnyToVisibleConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\BoolToNullableBoolConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\FalseToVisibleConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\LongToDoubleConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\NotNullToVisibleConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\NullToFalseConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\TrueToDarkThemeConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\TrueToMultiselectModeConverter.cs" />
+    <Compile Include="Views\Infrastructure\Converters\TrueToVisibleConverter.cs" />
+    <Compile Include="Views\Pages\CardDesignPage.xaml.cs">
+      <DependentUpon>CardDesignPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\CardsBrowsePage.xaml.cs">
+      <DependentUpon>CardsBrowsePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\FlashcardTestPage.xaml.cs">
+      <DependentUpon>FlashcardTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="InkCards_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\GrayLogo.scale-100.png" />
+    <Content Include="Assets\GrayLogo.scale-125.png" />
+    <Content Include="Assets\GrayLogo.scale-150.png" />
+    <Content Include="Assets\GrayLogo.scale-200.png" />
+    <Content Include="Assets\GrayLogo.scale-400.png" />
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\44c9e407-0fa0-47b0-9f68-3d7996ebe2e8.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\44c9e407-0fa0-47b0-9f68-3d7996ebe2e8.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\4f49b6bd-849e-43d6-9177-549868116c11.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\4f49b6bd-849e-43d6-9177-549868116c11.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\54fa4bfd-fcfd-43be-9b4a-5559f9107788.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\54fa4bfd-fcfd-43be-9b4a-5559f9107788.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\77c62729-6743-4938-80ec-61def16059dc.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\77c62729-6743-4938-80ec-61def16059dc.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\8cba3032-9781-43df-8fd3-68f984d3ceca.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\8cba3032-9781-43df-8fd3-68f984d3ceca.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\95fb8bfa-e526-44b2-b2ac-b8abd3059069.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\95fb8bfa-e526-44b2-b2ac-b8abd3059069.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\b45b7544-e586-4ffd-8216-d98a2141dde7.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\b45b7544-e586-4ffd-8216-d98a2141dde7.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\c9ea6596-d480-43e2-abf9-cf115dd5e9e0.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\c9ea6596-d480-43e2-abf9-cf115dd5e9e0.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\e36156f1-10f4-4b4c-b2a0-44486b07ac41.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\e36156f1-10f4-4b4c-b2a0-44486b07ac41.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\f0c0bb55-ecdf-495f-ab04-3810ff39b8de.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\1068bd79-77da-4211-934f-127198dde130\f0c0bb55-ecdf-495f-ab04-3810ff39b8de.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\0962c5aa-5dff-4dbe-8e74-82afcb1599bc.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\0962c5aa-5dff-4dbe-8e74-82afcb1599bc.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\0fb7aedb-181c-40b1-883b-e544f63b6051.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\0fb7aedb-181c-40b1-883b-e544f63b6051.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\6becb0be-3d65-4ffe-9721-02ae25457f7b.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\6becb0be-3d65-4ffe-9721-02ae25457f7b.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\7dd5d4f4-e58d-42aa-9394-d5450c060947.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\7dd5d4f4-e58d-42aa-9394-d5450c060947.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\abd4642d-d2f3-4203-b669-7d37314c2bef.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\abd4642d-d2f3-4203-b669-7d37314c2bef.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\af298e77-d4a5-4c5d-bd9e-cecd220fdd5d.back.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\InitialData\Collections\e9c04c5b-59e7-4799-8ec2-01daf16832ff\af298e77-d4a5-4c5d-bd9e-cecd220fdd5d.front.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Resources\BrushResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\ButtonResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\MeasurementResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Resources\TextBlockResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\Controls\CardCollectionPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\CardEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\CardPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\CardDesignPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\CardsBrowsePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\FlashcardTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Services.Store.Engagement, Version=10.0">
+      <Name>Microsoft Engagement Framework</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HockeySDK.UWP">
+      <Version>4.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
+      <Version>1.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+      <Version>1.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Services.Store.SDK">
+      <Version>10.1703.19001</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp">
+      <Version>1.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>1.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLightLibs">
+      <Version>5.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>9.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reactive">
+      <Version>3.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Unity">
+      <Version>4.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

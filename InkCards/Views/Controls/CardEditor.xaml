@@ -1,0 +1,69 @@
+﻿<UserControl
+    x:Class="InkCards.Views.Controls.CardEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:InkCards.Views.Infrastructure.Converters"
+    mc:Ignorable="d"
+    Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Style x:Key="InkCanvasBorderStyle" TargetType="Grid">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Width" Value="{StaticResource InkCardWidth}" />
+            <Setter Property="Height" Value="{StaticResource InkCardHeight}" />
+            <Setter Property="BorderBrush" Value="#E6E6E6" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style TargetType="InkToolbar">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="CardTitleTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Light" />
+            <Setter Property="Margin" Value="0 12" />
+        </Style>
+
+        <converters:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
+        <converters:BoolToNullableBoolConverter x:Key="BoolToNullableBoolConverter" />
+    </UserControl.Resources>
+    <RelativePanel>
+
+        <InkToolbar
+            x:Name="InkToolbar"
+            RelativePanel.AlignTopWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            TargetInkCanvas="{x:Bind CardCanvas}"
+            InkDrawingAttributesChanged="InkToolbar_InkDrawingAttributesChanged">
+            <InkToolbarCustomToggleButton
+                x:Name="GridLinesToggleButton"
+                IsChecked="{x:Bind ViewModel.InkToolbarPreferences.ShowGridLines, Mode=TwoWay,Converter={StaticResource BoolToNullableBoolConverter}}">
+                <FontIcon Glyph="&#xE154;" />
+            </InkToolbarCustomToggleButton>
+        </InkToolbar>
+
+        <Grid
+            x:Name="CardCanvasBorder"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="InkToolbar"
+            RelativePanel.AlignBottomWithPanel="True" 
+            Style="{StaticResource InkCanvasBorderStyle}">
+            <Grid
+                x:Name="GridLinesGrid"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Visibility="{x:Bind ViewModel.InkToolbarPreferences.ShowGridLines, Mode=OneWay, Converter={StaticResource TrueToVisibleConverter}}"/>
+            <InkCanvas
+                x:Name="CardCanvas"/>
+        </Grid>
+
+        <TextBlock
+            x:Name="TitleTextBlock"
+            RelativePanel.AlignTopWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            Style="{StaticResource CardTitleTextBlockStyle}"
+            Text="{x:Bind Title, Mode=OneWay}" />
+    </RelativePanel>
+</UserControl>

@@ -1,0 +1,226 @@
+﻿<Page
+    x:Name="PageRoot"
+    x:Class="InkCards.Views.Pages.CardDesignPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:InkCards.Views.Controls"
+    xmlns:models="using:InkCards.Models.Cards"
+    xmlns:converters="using:InkCards.Views.Infrastructure.Converters"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:behaviors="using:InkCards.Views.Infrastructure.Behaviors"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <converters:AnyToVisibleConverter x:Key="AnyToVisibleConverter" />
+        <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
+        <converters:FalseToVisibleConverter x:Key="FalseToVisibleConverter" />
+    </Page.Resources>
+    <Grid
+        x:Name="LayoutRoot"
+        Padding="{StaticResource PagePadding}"
+        Background="{StaticResource PageBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="CardCollectionTitleStates">
+                <VisualState x:Name="CardCollectionTitleViewState" />
+                <VisualState x:Name="CardCollectionTitleEditState">
+                    <VisualState.Setters>
+                        <Setter Target="CardCollectionTitleButton.Visibility" Value="Collapsed" />
+                        <Setter Target="CardCollectionTitleTextBox.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="0"
+                Style="{StaticResource BackButtonStyle}"
+                HorizontalAlignment="Stretch"
+                Foreground="{ThemeResource SystemAccentColor}"
+                Click="{x:Bind ViewModel.GoToMainPage}">
+                <StackPanel Orientation="Horizontal">
+                    <FontIcon Glyph="&#xE09A;" FontSize="18" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="CardCollectionTitleButton"
+                Grid.Column="1"
+                FontSize="36"
+                FontWeight="Light"
+                HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Left"
+                VerticalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent"
+                Margin="0 1"
+                BorderThickness="0"
+                ToolTipService.ToolTip="Tap here to edit the title"
+                Content="{x:Bind ViewModel.CurrentCardCollectionName, Mode=OneWay}">
+                <interactivity:Interaction.Behaviors>
+                    <interactions:EventTriggerBehavior EventName="Click">
+                        <interactions:GoToStateAction
+                        TargetObject="{x:Bind PageRoot}" 
+                        StateName="CardCollectionTitleEditState" />
+                        <behaviors:FocusControlAction
+                        TargetElement="{x:Bind CardCollectionTitleTextBox}" />
+                    </interactions:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </Button>
+
+            <TextBox
+                x:Name="CardCollectionTitleTextBox"
+                Grid.Column="1"
+                FontSize="36"
+                FontWeight="Light"
+                Margin="0"
+                Visibility="Collapsed"
+                BorderThickness="1"
+                Text="{x:Bind ViewModel.CurrentCardCollectionName, Mode=TwoWay}"
+                KeyUp="CardCollectionTitleTextBox_KeyUp">
+                <interactivity:Interaction.Behaviors>
+                    <interactions:EventTriggerBehavior EventName="LostFocus">
+                        <interactions:GoToStateAction
+                        TargetObject="{x:Bind PageRoot}" 
+                        StateName="CardCollectionTitleViewState" />
+                    </interactions:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </TextBox>
+
+        </Grid>
+
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal"
+            Margin="50 0 0 24">
+            <TextBlock
+                Text="{x:Bind ViewModel.Cards.Count, Mode=OneWay}"
+                Style="{StaticResource InlineSubtitleTextBlockStyle}"
+                Margin="0 0 6 0" />
+            <TextBlock
+                Style="{StaticResource InlineSubtitleTextBlockStyle}"
+                Text="cards" />
+        </StackPanel>
+
+
+        <GridView
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            MinHeight="122"
+            Margin="-16 0 0 0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            ItemsSource="{x:Bind ViewModel.Cards}"
+            ScrollViewer.HorizontalScrollMode="Enabled"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollMode="Disabled"
+            SelectedItem="{x:Bind ViewModel.CurrentlyEditedCard, Mode=TwoWay}">
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Width" Value="180" />
+                    <Setter Property="Height" Value="100" />
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="BorderBrush" Value="LightGray" />
+                    <Setter Property="Margin" Value="0 0 12 12" />
+                </Style>
+            </GridView.ItemContainerStyle>
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:InkCard">
+                    <Border
+                        x:Name="InkCardPreviewBorder"
+                        RightTapped="InkCardPreviewBorder_RightTapped">
+                        <FlyoutBase.AttachedFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem
+                                    x:Name="InkCardDeleteMenuFlyoutItem"
+                                    Text="Delete Card"
+                                    Click="InkCardDeleteMenuFlyoutItem_Click"
+                                    Tag="{x:Bind }"/>
+                            </MenuFlyout>
+                        </FlyoutBase.AttachedFlyout>
+                        <controls:CardPreview
+                                Card="{x:Bind}"
+                                Width="{StaticResource InkCardPreviewWidth}"
+                                Height="{StaticResource InkCardPreviewHeight}" />
+
+                    </Border>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.Header>
+                <Button
+                    Style="{StaticResource LeftAddToListButtonStyle}"
+                    ToolTipService.ToolTip="Add a new card to the collection"
+                    Command="{x:Bind ViewModel.AddCardCommand}">
+                    <FontIcon 
+                        Glyph="&#xE109;"
+                        FontSize="{StaticResource AddToListFontSize}" />
+                </Button>
+            </GridView.Header>
+        </GridView>
+
+        <controls:CardEditor
+            Grid.Row="4"
+            Grid.Column="0"
+            x:Name="CardFrontEditor" 
+            HorizontalAlignment="Center"
+            ContainsAnyStrokes="{x:Bind ViewModel.CurrentlyEditedCardFrontContainsStrokes, Mode=TwoWay}"
+            StrokesEdited="{x:Bind SaveCurrentCardAsync}"
+            Visibility="{x:Bind ViewModel.CurrentlyEditedCard, Mode=OneWay, Converter={StaticResource NotNullToVisibleConverter}}"
+            Margin="0 12 12 0"
+            ToolbarId="FrontEditorToolbar"
+            Title="Front"/>
+
+        <controls:CardEditor
+            x:Name="CardBackEditor"
+            Grid.Row="4"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            ContainsAnyStrokes="{x:Bind ViewModel.CurrentlyEditedCardBackContainsStrokes, Mode=TwoWay}"
+            StrokesEdited="{x:Bind SaveCurrentCardAsync}"
+            Visibility="{x:Bind ViewModel.CurrentlyEditedCard, Mode=OneWay, Converter={StaticResource NotNullToVisibleConverter}}"
+            Margin="12 12 0 0"
+            ToolbarId="BackEditorToolbar"
+            Title="Back"/>
+
+        <TextBlock
+            Grid.Row="5"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Margin="0 48 0 0"
+            Style="{StaticResource SubtleHintTextBlockStyle}"
+            Visibility="{x:Bind ViewModel.CanSaveCurrenlyEditedCard, Mode=OneWay, Converter={StaticResource FalseToVisibleConverter}}"
+            Text="Card will be saved when neither side is blank." />
+    </Grid>
+</Page>
+
+    
